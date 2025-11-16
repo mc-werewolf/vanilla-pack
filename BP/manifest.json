@@ -1,33 +1,49 @@
 {
-    "format_version": 2,
-    "header": {
-        "name": "Werewolf Standard Roles",
-        "description": "provides and handles the fundamental roles of the Werewolf game.",
-        "uuid": "39716916-2dec-4c1f-b1e6-b9ff0496899b",
-        "version": [1, 0, 0],
-        "min_engine_version": [1, 21, 100]
-    },
-    "modules": [
-        {
-            "type": "script",
-            "language": "javascript",
-            "entry": "scripts/index.js",
-            "uuid": "452e2f4a-8a7f-44b2-967b-a604ba9e3955",
-            "version": [1, 0, 0]
-        }
+  "format_version": 2,
+  "header": {
+    "name": "Werewolf Standard Roles",
+    "description": "provides and handles the fundamental roles of the Werewolf game.",
+    "uuid": "39716916-2dec-4c1f-b1e6-b9ff0496899b",
+    "version": [
+      1,
+      0,
+      0
     ],
-    "dependencies": [
-        {
-            "module_name": "@minecraft/server",
-            "version": "2.1.0"
-        },
-        {
-            "module_name": "@minecraft/server-ui",
-            "version": "2.0.0"
-        },
-        {
-            "uuid": "ae9411df-ada9-4e2e-a563-924f38978c9c",
-            "version": [1, 0, 0]
-        }
+    "min_engine_version": [
+      1,
+      21,
+      100
     ]
+  },
+  "modules": [
+    {
+      "type": "script",
+      "language": "javascript",
+      "entry": "scripts/index.js",
+      "uuid": "452e2f4a-8a7f-44b2-967b-a604ba9e3955",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "module_name": "@minecraft/server",
+      "version": "2.1.0"
+    },
+    {
+      "module_name": "@minecraft/server-ui",
+      "version": "2.0.0"
+    },
+    {
+      "uuid": "ae9411df-ada9-4e2e-a563-924f38978c9c",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ]
 }

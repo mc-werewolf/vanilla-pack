@@ -55,7 +55,7 @@ export const properties = {
         "werewolf-gamemanager": "1.0.0-dev.1", // "kairo": "1.0.0"
     },
     tags: [
-        // "stable",
+    // "stable",
     ],
 };
 /**

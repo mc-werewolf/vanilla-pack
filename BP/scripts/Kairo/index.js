@@ -1,3 +1,4 @@
+var _a;
 import { system } from "@minecraft/server";
 import { AddonPropertyManager } from "./addons/AddonPropertyManager";
 import { AddonInitializer } from "./addons/router/init/AddonInitializer";
@@ -12,13 +13,14 @@ export class Kairo {
     }
     static getInstance() {
         if (!this.instance) {
-            this.instance = new Kairo();
+            this.instance = new _a();
         }
         return this.instance;
     }
     static init() {
         const inst = this.getInstance();
-        if (inst.initialized) return;
+        if (inst.initialized)
+            return;
         inst.initialized = true;
         inst.addonInitializer.subscribeClientHooks();
     }
@@ -35,23 +37,26 @@ export class Kairo {
         this.getInstance().addonInitializer.unsubscribeClientHooks();
         system.sendScriptEvent(SCRIPT_EVENT_IDS.UNSUBSCRIBE_INITIALIZE, "");
     }
-    static dataVaultHandleOnScriptEvent(message) {
-        this.getInstance().addonManager.dataVaultHandleOnScriptEvent(message);
-    }
     getDataVaultLastDataLoaded() {
         return this.addonManager.getDataVaultLastDataLoaded();
     }
     static set onActivate(val) {
-        if (typeof val === "function") this._pushSorted(this._initHooks, val);
-        else this._pushSorted(this._initHooks, val.run, val.options);
+        if (typeof val === "function")
+            this._pushSorted(this._initHooks, val);
+        else
+            this._pushSorted(this._initHooks, val.run, val.options);
     }
     static set onDeactivate(val) {
-        if (typeof val === "function") this._pushSorted(this._deinitHooks, val);
-        else this._pushSorted(this._deinitHooks, val.run, val.options);
+        if (typeof val === "function")
+            this._pushSorted(this._deinitHooks, val);
+        else
+            this._pushSorted(this._deinitHooks, val.run, val.options);
     }
     static set onScriptEvent(val) {
-        if (typeof val === "function") this._pushSorted(this._seHooks, val);
-        else this._pushSorted(this._seHooks, val.run, val.options);
+        if (typeof val === "function")
+            this._pushSorted(this._seHooks, val);
+        else
+            this._pushSorted(this._seHooks, val.run, val.options);
     }
     static addActivate(fn, opt) {
         this._pushSorted(this._initHooks, fn, opt);
@@ -63,13 +68,13 @@ export class Kairo {
         this._pushSorted(this._seHooks, fn, opt);
     }
     _scriptEvent(message) {
-        void Kairo._runScriptEvent(message);
+        void _a._runScriptEvent(message);
     }
     _activateAddon() {
-        void Kairo._runActivateHooks();
+        void _a._runActivateHooks();
     }
     _deactivateAddon() {
-        void Kairo._runDeactivateHooks();
+        void _a._runDeactivateHooks();
     }
     static _pushSorted(arr, fn, opt) {
         arr.push({ fn, priority: opt?.priority ?? 0 });
@@ -79,42 +84,39 @@ export class Kairo {
         for (const { fn } of this._initHooks) {
             try {
                 await fn();
-            } catch (e) {
-                system.run(() =>
-                    console.warn(
-                        `[Kairo.onActivate] ${e instanceof Error ? (e.stack ?? e.message) : String(e)}`,
-                    ),
-                );
+            }
+            catch (e) {
+                system.run(() => console.warn(`[Kairo.onActivate] ${e instanceof Error ? (e.stack ?? e.message) : String(e)}`));
             }
         }
+        this.getInstance().addonManager.setActiveState(true);
     }
     static async _runDeactivateHooks() {
         for (const { fn } of [...this._deinitHooks].reverse()) {
             try {
                 await fn();
-            } catch (e) {
-                system.run(() =>
-                    console.warn(
-                        `[Kairo.onDeactivate] ${e instanceof Error ? (e.stack ?? e.message) : String(e)}`,
-                    ),
-                );
+            }
+            catch (e) {
+                system.run(() => console.warn(`[Kairo.onDeactivate] ${e instanceof Error ? (e.stack ?? e.message) : String(e)}`));
             }
         }
+        this.getInstance().addonManager.setActiveState(false);
     }
     static async _runScriptEvent(message) {
         for (const { fn } of this._seHooks) {
             try {
                 await fn(message);
-            } catch (e) {
-                system.run(() =>
-                    console.warn(
-                        `[Kairo.onScriptEvent] ${e instanceof Error ? (e.stack ?? e.message) : String(e)}`,
-                    ),
-                );
+            }
+            catch (e) {
+                system.run(() => console.warn(`[Kairo.onScriptEvent] ${e instanceof Error ? (e.stack ?? e.message) : String(e)}`));
             }
         }
     }
 }
+_a = Kairo;
 Kairo._initHooks = [];
 Kairo._deinitHooks = [];
 Kairo._seHooks = [];
+Kairo.dataVaultHandleOnScriptEvent = (message) => {
+    _a.getInstance().addonManager.dataVaultHandleOnScriptEvent(message);
+};

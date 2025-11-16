@@ -20,20 +20,14 @@ export class AddonInitializeResponse {
      * Also send the registration ID using the scoreboard
      */
     sendResponse(addonProperty) {
-        system.sendScriptEvent(
-            SCRIPT_EVENT_IDS.BEHAVIOR_REGISTRATION_RESPONSE,
-            JSON.stringify([
-                addonProperty,
-                world.scoreboard
-                    .getObjective(SCOREBOARD_NAMES.ADDON_COUNTER)
-                    ?.getScore(SCOREBOARD_NAMES.ADDON_COUNTER) ?? 0,
-            ]),
-        );
+        system.sendScriptEvent(SCRIPT_EVENT_IDS.BEHAVIOR_REGISTRATION_RESPONSE, JSON.stringify([
+            addonProperty,
+            world.scoreboard
+                .getObjective(SCOREBOARD_NAMES.ADDON_COUNTER)
+                ?.getScore(SCOREBOARD_NAMES.ADDON_COUNTER) ?? 0,
+        ]));
     }
     sendInitializationCompleteResponse() {
-        system.sendScriptEvent(
-            SCRIPT_EVENT_IDS.BEHAVIOR_INITIALIZATION_COMPLETE_RESPONSE,
-            SCRIPT_EVENT_MESSAGES.NONE,
-        );
+        system.sendScriptEvent(SCRIPT_EVENT_IDS.BEHAVIOR_INITIALIZATION_COMPLETE_RESPONSE, SCRIPT_EVENT_MESSAGES.NONE);
     }
 }

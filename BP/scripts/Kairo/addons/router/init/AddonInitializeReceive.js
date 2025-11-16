@@ -42,9 +42,7 @@ export class AddonInitializeReceive {
     handleRegistrationRequest() {
         const addonCounter = ScoreboardManager.ensureObjective(SCOREBOARD_NAMES.ADDON_COUNTER);
         addonCounter.addScore(SCOREBOARD_NAMES.ADDON_COUNTER, 1);
-        this.addonInitializer.setRegistrationNum(
-            addonCounter.getScore(SCOREBOARD_NAMES.ADDON_COUNTER) ?? 0,
-        );
+        this.addonInitializer.setRegistrationNum(addonCounter.getScore(SCOREBOARD_NAMES.ADDON_COUNTER) ?? 0);
         this.addonInitializer.sendResponse();
     }
     handleRequestReseedId() {

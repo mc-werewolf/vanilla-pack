@@ -1,23 +1,39 @@
 {
-    "format_version": 2,
-    "header": {
-        "name": "Werewolf Standard Roles",
-        "description": "provides and handles the fundamental roles of the Werewolf game.",
-        "uuid": "ae9411df-ada9-4e2e-a563-924f38978c9c",
-        "version": [1, 0, 0],
-        "min_engine_version": [1, 21, 100]
-    },
-    "modules": [
-        {
-            "type": "resources",
-            "uuid": "2dd8fafe-b659-4532-ae6f-1f63bd23c727",
-            "version": [1, 0, 0]
-        }
+  "format_version": 2,
+  "header": {
+    "name": "Werewolf Standard Roles",
+    "description": "provides and handles the fundamental roles of the Werewolf game.",
+    "uuid": "ae9411df-ada9-4e2e-a563-924f38978c9c",
+    "version": [
+      1,
+      0,
+      0
     ],
-    "dependencies": [
-        {
-            "uuid": "39716916-2dec-4c1f-b1e6-b9ff0496899b",
-            "version": [1, 0, 0]
-        }
+    "min_engine_version": [
+      1,
+      21,
+      100
     ]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "2dd8fafe-b659-4532-ae6f-1f63bd23c727",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "39716916-2dec-4c1f-b1e6-b9ff0496899b",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ]
 }

@@ -5,7 +5,12 @@ export class AddonReceiver {
         this.handleScriptEvent = (ev) => {
             const { id, message } = ev;
             const addonProperty = this.addonManager.getSelfAddonProperty();
-            if (id !== `${SCRIPT_EVENT_ID_PREFIX.KAIRO}:${addonProperty.sessionId}`) return;
+            if (id !== `${SCRIPT_EVENT_ID_PREFIX.KAIRO}:${addonProperty.sessionId}`)
+                return;
+            if (this.addonManager.isActive === false) {
+                if (message !== SCRIPT_EVENT_MESSAGES.ACTIVATE_REQUEST)
+                    return;
+            }
             switch (message) {
                 case SCRIPT_EVENT_MESSAGES.ACTIVATE_REQUEST:
                     this.addonManager._activateAddon();

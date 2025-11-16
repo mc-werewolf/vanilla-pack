@@ -13,18 +13,19 @@ export class ErrorManager {
             .label({ text: `[ ${errorDetail.errorCode} ]` })
             .divider()
             .label({
-                rawtext: [
-                    { translate: errorDetail.errorMessageId },
-                    { text: "\n\n" },
-                    { translate: errorDetail.errorHintId },
-                ],
-            })
+            rawtext: [
+                { translate: errorDetail.errorMessageId },
+                { text: "\n\n" },
+                { translate: errorDetail.errorHintId },
+            ],
+        })
             .divider()
             .label({
-                translate: KAIRO_TRANSLATE_IDS.ERROR_FORM_FOOTER,
-                with: [errorDetail.errorCode],
-            });
+            translate: KAIRO_TRANSLATE_IDS.ERROR_FORM_FOOTER,
+            with: [errorDetail.errorCode],
+        });
         const { selection, canceled } = await errorForm.show(player);
-        if (canceled) return;
+        if (canceled)
+            return;
     }
 }
