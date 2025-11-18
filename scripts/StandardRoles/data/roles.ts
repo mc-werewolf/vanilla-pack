@@ -1,16 +1,4 @@
-export const RoleFactionValues = ["villager", "werewolf", "fox", "neutral"] as const;
-type RoleFaction = (typeof RoleFactionValues)[number];
-
-export const ResultTypeValues = ["villager", "werewolf", "fox"] as const;
-type ResultType = (typeof ResultTypeValues)[number];
-
-export const ColorTypeValues = [
-    "villager_lime",
-    "werewolf_red",
-    "fox_yellow",
-    "neutral_blue",
-] as const;
-type ColorType = (typeof ColorTypeValues)[number];
+import type { RawMessage } from "@minecraft/server";
 
 export const GameEventTypeValues = [
     "AfterGameStart",
@@ -30,16 +18,18 @@ interface RoleKey {
 type RoleRef = RoleKey;
 
 // name と description はidを使った translate 表現でやるからいらない
-export interface Role {
+export interface RoleDefinition {
     id: string;
-    faction: RoleFaction;
+    name: RawMessage;
+    description: RawMessage;
+    faction: string;
     count: {
         max?: number;
         step?: number;
     };
-    color?: ColorType; // 指定しなければ、チームに基づいて自動で決定される
-    divinationResult?: ResultType; // 占い結果
-    mediumResult?: ResultType; // 霊視結果
+    color?: string; // 指定しなければ、factionに基づいて自動で決定される
+    divinationResult?: string; // 占い結果
+    mediumResult?: string; // 霊視結果
     knownRoles?: string[]; // 初期に知っている役職
     handleGmaeEvents?: GameEventType[]; // 処理するゲームイベント
     appearance?: {
@@ -50,9 +40,11 @@ export interface Role {
     sortIndex: number; // ソート順
 }
 
-export const roles: Role[] = [
+export const roles: RoleDefinition[] = [
     {
         id: "villager",
+        name: {},
+        description: {},
         faction: "villager",
         count: { max: 40 },
         sortIndex: 0,
