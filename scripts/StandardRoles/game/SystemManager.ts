@@ -1,3 +1,4 @@
+import type { KairoCommand } from "../../Kairo/utils/KairoUtils";
 import { InGameManager } from "./ingame/InGameManager";
 import { OutGameManager } from "./outgame/OutGameManager";
 import { SystemEventManager } from "./system/events/SystemEventManager";
@@ -39,8 +40,8 @@ export class SystemManager {
         return this.instance;
     }
 
-    public handleScriptEvent(message: string): void {
-        this.scriptEventReceiver.handleScriptEvent(message);
+    public handleScriptEvent(data: KairoCommand): void {
+        this.scriptEventReceiver.handleScriptEvent(data);
     }
 
     public subscribeEvents(): void {

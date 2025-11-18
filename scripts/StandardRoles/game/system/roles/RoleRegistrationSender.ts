@@ -1,10 +1,8 @@
-import { system } from "@minecraft/server";
 import { roles } from "../../../data/roles";
 import type { RoleManager } from "./RoleManager";
-import { SCRIPT_EVENT_ID_PREFIX } from "../../../../Kairo/constants/scriptevent";
 import { SCRIPT_EVENT_COMMAND_IDS, SCRIPT_EVENT_ID_SUFFIX } from "../../../constants/scriptevent";
 import { properties } from "../../../../properties";
-import type { Command } from "../ScriptEventReceiver";
+import { KairoUtils, type KairoCommand } from "../../../../Kairo/utils/KairoUtils";
 
 export class RoleRegistrationSender {
     private constructor(private readonly roleManager: RoleManager) {}
@@ -13,15 +11,12 @@ export class RoleRegistrationSender {
     }
 
     public send(): void {
-        const data: Command = {
+        const data: KairoCommand = {
             commandId: SCRIPT_EVENT_COMMAND_IDS.ROLE_REGISTRATION_RESPONSE,
             addonId: properties.id,
             roles: roles,
         };
 
-        system.sendScriptEvent(
-            `${SCRIPT_EVENT_ID_PREFIX.KAIRO}:${SCRIPT_EVENT_ID_SUFFIX.WEREWOLF_GAMEMANAGER}`,
-            `${JSON.stringify(data)}`,
-        );
+        KairoUtils.sendKairoCommand(SCRIPT_EVENT_ID_SUFFIX.WEREWOLF_GAMEMANAGER, data);
     }
 }

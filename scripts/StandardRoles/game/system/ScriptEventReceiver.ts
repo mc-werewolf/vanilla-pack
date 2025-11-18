@@ -1,12 +1,7 @@
 import { ConsoleManager } from "../../../Kairo/utils/ConsoleManager";
+import type { KairoCommand } from "../../../Kairo/utils/KairoUtils";
 import { SCRIPT_EVENT_COMMAND_IDS, SCRIPT_EVENT_MESSAGES } from "../../constants/scriptevent";
 import { GameWorldState, type SystemManager } from "../SystemManager";
-
-export interface Command {
-    commandId: string;
-    addonId: string;
-    [key: string]: any;
-}
 
 export class ScriptEventReceiver {
     private constructor(private readonly systemManager: SystemManager) {}
@@ -14,21 +9,7 @@ export class ScriptEventReceiver {
         return new ScriptEventReceiver(systemManager);
     }
 
-    public handleScriptEvent(message: string): void {
-        let data: any;
-
-        try {
-            data = JSON.parse(message);
-        } catch {
-            ConsoleManager.warn(`[ScriptEventReceiver] Invalid JSON: ${message}`);
-            return;
-        }
-
-        if (!data || typeof data.commandId !== "string") {
-            ConsoleManager.warn(`[ScriptEventReceiver] Missing command: ${message}`);
-            return;
-        }
-
+    public handleScriptEvent(data: KairoCommand): void {
         switch (data.commandId) {
             case SCRIPT_EVENT_COMMAND_IDS.WORLD_STATE_CHANGE:
                 this.handleWorldStateChange(data.worldState);
