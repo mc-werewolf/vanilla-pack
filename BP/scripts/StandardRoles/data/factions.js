@@ -10,6 +10,7 @@ export const factions = [
         victoryCondition: {
             description: {},
         },
+        sortIndex: 100,
     },
     {
         id: "werewolf",
@@ -21,5 +22,6 @@ export const factions = [
         victoryCondition: {
             description: {},
         },
+        sortIndex: 200,
     },
 ];

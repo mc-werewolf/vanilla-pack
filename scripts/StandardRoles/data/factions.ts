@@ -9,6 +9,7 @@ export interface FactionDefinition {
     victoryCondition: {
         description: RawMessage;
     }; // あとで勝利条件をカスタム定義できるようにする
+    sortIndex: number;
 }
 
 export const factions: FactionDefinition[] = [
@@ -22,6 +23,7 @@ export const factions: FactionDefinition[] = [
         victoryCondition: {
             description: {},
         },
+        sortIndex: 100,
     },
     {
         id: "werewolf",
@@ -33,5 +35,6 @@ export const factions: FactionDefinition[] = [
         victoryCondition: {
             description: {},
         },
+        sortIndex: 200,
     },
 ];
