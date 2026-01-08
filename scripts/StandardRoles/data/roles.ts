@@ -76,6 +76,7 @@ export const roles: RoleDefinition[] = [
         name: { translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.ROLE_NAME_WEREWOLF },
         description: { translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.ROLE_DESCRIPTION_WEREWOLF },
         factionId: "werewolf",
+        count: { max: 10 },
         sortIndex: 4,
     },
     {
