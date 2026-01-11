@@ -31,7 +31,7 @@ werewolf-standardroles.role.description.madman=A dangerous human who sides with 
 werewolf-standardroles.faction.victorycondition.villager=When the Werewolf faction is completely eliminated, the Villager faction wins if at least one Villager remains alive.
 werewolf-standardroles.faction.victorycondition.werewolf=When the Villager faction is completely eliminated, the Werewolf faction wins if at least one Werewolf remains alive.
 
-werewolf-standardroles.game.result.villagerfaction.victory.title=§aVillager Faction Victory!§r
-werewolf-standardroles.game.result.villagerfaction.victory.message=§aVillager Faction has won!§r
-werewolf-standardroles.game.result.werewolffaction.victory.title=§4Werewolf Faction Victory!§r
-werewolf-standardroles.game.result.werewolffaction.victory.message=§4Werewolf Faction has won!§r
+werewolf-standardroles.game.result.villagerfaction.victory.title=§aVillagers§f Win!§r
+werewolf-standardroles.game.result.villagerfaction.victory.message=§fThe §aVillager§f Faction has won.§r
+werewolf-standardroles.game.result.werewolffaction.victory.title=§4Werewolves§f Win!§r
+werewolf-standardroles.game.result.werewolffaction.victory.message=§fThe §4Werewolf§f Faction has won.§r

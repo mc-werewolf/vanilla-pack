@@ -2,6 +2,7 @@ import { WEREWOLF_STANDARDROLES_TRANSLATE_IDS } from "../constants/translate";
 export const factions = [
     {
         id: "villager",
+        type: "standard",
         name: { translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.FACTION_NAME_VILLAGER },
         description: {
             translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.FACTION_DESCRIPTION_VILLAGER,
@@ -10,21 +11,7 @@ export const factions = [
         victoryCondition: {
             priority: 9000,
             condition: {
-                type: "and",
-                conditions: [
-                    {
-                        type: "factionAliveCount",
-                        factionId: "werewolf",
-                        operator: "==",
-                        value: 0,
-                    },
-                    {
-                        type: "factionAliveCount",
-                        factionId: "villager",
-                        operator: ">",
-                        value: 0,
-                    },
-                ],
+                type: "standardFactionVictory",
             },
             description: {
                 translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.FACTION_VICTORYCONDITION_VILLAGER,
@@ -42,6 +29,7 @@ export const factions = [
     },
     {
         id: "werewolf",
+        type: "standard",
         name: { translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.FACTION_NAME_WEREWOLF },
         description: {
             translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.FACTION_DESCRIPTION_WEREWOLF,
@@ -50,21 +38,7 @@ export const factions = [
         victoryCondition: {
             priority: 8000,
             condition: {
-                type: "and",
-                conditions: [
-                    {
-                        type: "factionAliveCount",
-                        factionId: "villager",
-                        operator: "==",
-                        value: 0,
-                    },
-                    {
-                        type: "factionAliveCount",
-                        factionId: "werewolf",
-                        operator: ">",
-                        value: 0,
-                    },
-                ],
+                type: "standardFactionVictory",
             },
             description: {
                 translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.FACTION_VICTORYCONDITION_WEREWOLF,

@@ -4,6 +4,7 @@ import { WEREWOLF_STANDARDROLES_TRANSLATE_IDS } from "../constants/translate";
 export const factions: FactionDefinition[] = [
     {
         id: "villager",
+        type: "standard",
         name: { translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.FACTION_NAME_VILLAGER },
         description: {
             translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.FACTION_DESCRIPTION_VILLAGER,
@@ -12,21 +13,7 @@ export const factions: FactionDefinition[] = [
         victoryCondition: {
             priority: 9000,
             condition: {
-                type: "and",
-                conditions: [
-                    {
-                        type: "factionAliveCount",
-                        factionId: "werewolf",
-                        operator: "==",
-                        value: 0,
-                    },
-                    {
-                        type: "factionAliveCount",
-                        factionId: "villager",
-                        operator: ">",
-                        value: 0,
-                    },
-                ],
+                type: "standardFactionVictory",
             },
             description: {
                 translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.FACTION_VICTORYCONDITION_VILLAGER,
@@ -46,6 +33,7 @@ export const factions: FactionDefinition[] = [
     },
     {
         id: "werewolf",
+        type: "standard",
         name: { translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.FACTION_NAME_WEREWOLF },
         description: {
             translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.FACTION_DESCRIPTION_WEREWOLF,
@@ -54,21 +42,7 @@ export const factions: FactionDefinition[] = [
         victoryCondition: {
             priority: 8000,
             condition: {
-                type: "and",
-                conditions: [
-                    {
-                        type: "factionAliveCount",
-                        factionId: "villager",
-                        operator: "==",
-                        value: 0,
-                    },
-                    {
-                        type: "factionAliveCount",
-                        factionId: "werewolf",
-                        operator: ">",
-                        value: 0,
-                    },
-                ],
+                type: "standardFactionVictory",
             },
             description: {
                 translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.FACTION_VICTORYCONDITION_WEREWOLF,
@@ -90,12 +64,15 @@ export const factions: FactionDefinition[] = [
 
 export interface FactionDefinition {
     id: string;
+    type: FactionCategory;
     name: RawMessage;
     description: RawMessage;
     defaultColor: string;
     victoryCondition: VictoryCondition;
     sortIndex: number;
 }
+
+export type FactionCategory = "standard" | "independent" | "neutral";
 
 interface VictoryCondition {
     priority: number;
@@ -123,6 +100,7 @@ type GameVariableKey = "remainingTime" | "alivePlayerCount";
 type NumericValue = number | GameVariableKey | { factionAliveCount: string };
 
 type Condition =
+    | StandardFactionVictoryCondition
     | ComparisonCondition
     | FactionAliveCountComparison
     | PlayerAliveCountComparison
@@ -130,6 +108,10 @@ type Condition =
     | AndCondition
     | OrCondition
     | NotCondition;
+
+export interface StandardFactionVictoryCondition {
+    type: "standardFactionVictory";
+}
 
 interface ComparisonCondition {
     type: "comparison";

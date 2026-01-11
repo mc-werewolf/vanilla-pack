@@ -31,7 +31,7 @@ werewolf-standardroles.role.description.madman=人狼に味方する危険な人
 werewolf-standardroles.faction.victorycondition.villager=人狼陣営が全滅したとき、村人陣営の生存人数が1以上であれば勝利。
 werewolf-standardroles.faction.victorycondition.werewolf=村人陣営が全滅したとき、人狼陣営の生存人数が1以上であれば勝利。
 
-werewolf-standardroles.game.result.villagerfaction.victory.title=§a村人陣営の勝利！§r
-werewolf-standardroles.game.result.villagerfaction.victory.message=§a村人陣営が勝利しました！§r
-werewolf-standardroles.game.result.werewolffaction.victory.title=§4人狼陣営の勝利！§r
-werewolf-standardroles.game.result.werewolffaction.victory.message=§4人狼陣営が勝利しました！§r
+werewolf-standardroles.game.result.villagerfaction.victory.title=§a村人陣営§fの勝利！§r
+werewolf-standardroles.game.result.villagerfaction.victory.message=§a村人陣営§fが勝利しました！§r
+werewolf-standardroles.game.result.werewolffaction.victory.title=§4人狼陣営§fの勝利！§r
+werewolf-standardroles.game.result.werewolffaction.victory.message=§4人狼陣営§fが勝利しました！§r
