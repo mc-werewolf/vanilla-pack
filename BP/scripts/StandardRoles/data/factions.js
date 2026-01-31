@@ -2,6 +2,7 @@ import { WEREWOLF_STANDARDROLES_TRANSLATE_IDS } from "../constants/translate";
 export const factions = [
     {
         id: "villager",
+        defaultRoleId: "villager",
         type: "standard",
         name: { translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.FACTION_NAME_VILLAGER },
         description: {
@@ -29,6 +30,7 @@ export const factions = [
     },
     {
         id: "werewolf",
+        defaultRoleId: "werewolf",
         type: "standard",
         name: { translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.FACTION_NAME_WEREWOLF },
         description: {

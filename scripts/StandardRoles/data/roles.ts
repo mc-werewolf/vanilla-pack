@@ -7,39 +7,53 @@ export const GameEventTypeValues = [
     "AfterMeetingStart",
     "SkillUse",
     "SkillUseInMeeting",
+    "SkillUseOutMeeting",
     "Death",
 ] as const;
 export type GameEventType = (typeof GameEventTypeValues)[number];
 
 interface RoleKey {
-    addonId: string;
-    roleId: string;
+    readonly addonId: string;
+    readonly roleId: string;
 }
 
 type RoleRef = RoleKey;
 
 export interface RoleDefinition {
-    id: string;
-    name: RawMessage;
-    description: RawMessage;
-    factionId: string;
-    isExcludedFromSurvivalCheck?: boolean; // 主に狂人枠で使用
-    count?: {
+    readonly id: string;
+    readonly name: RawMessage;
+    readonly description: RawMessage;
+    readonly factionId: string;
+    readonly isExcludedFromSurvivalCheck?: boolean; // 主に狂人枠で使用
+    readonly count?: {
         max?: number;
         step?: number;
     };
-    color?: string; // 指定しなければ、factionに基づいて自動で決定される
-    divinationResult?: string; // 占い結果
-    mediumResult?: string; // 霊視結果
-    knownRoles?: string[]; // 初期に知っている役職
-    handleGameEvents?: {}; // 処理するゲームイベント
-    appearance?: {
-        toSelf?: RoleRef; // 自分目線の表示 (呪われし者とか)
-        toOthers?: RoleRef; // 他人目線の表示 (テレパシストとか)
-        toWerewolves?: RoleRef; // 人狼目線の表示 (スパイとか)
+    readonly color?: string; // 指定しなければ、factionに基づいて自動で決定される
+    readonly divinationResult?: string; // 占い結果 roleId (別アドオンでも可)
+    readonly mediumResult?: string; // 霊視結果 roleId (別アドオンでも可)
+    readonly knownRoles?: string[]; // 初期に知っている役職
+    readonly skills?: SkillDefinition[]; // 役職に紐づくスキル定義
+    readonly handleGameEvents?: RoleSkillEvents; // スキルのトリガーとなるイベント
+    readonly appearance?: {
+        readonly toSelf?: RoleRef; // 自分目線の表示 (呪われし者とか)
+        readonly toOthers?: RoleRef; // 他人目線の表示 (テレパシストとか)
+        readonly toWerewolves?: RoleRef; // 人狼目線の表示 (スパイとか)
     };
-    sortIndex: number; // ソート順
+    readonly sortIndex: number; // ソート順
 }
+
+export type SkillValue = number | string;
+export interface SkillDefinition {
+    id: string;
+    name: RawMessage;
+    cooldown?: SkillValue; // seconds
+    maxUses?: SkillValue;
+}
+export interface SkillEventBinding {
+    skillId: string;
+}
+export type RoleSkillEvents = Partial<Record<GameEventType, SkillEventBinding>>;
 
 export const roles: RoleDefinition[] = [
     {
@@ -56,6 +70,19 @@ export const roles: RoleDefinition[] = [
         description: { translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.ROLE_DESCRIPTION_SEER },
         factionId: "villager",
         sortIndex: 1,
+        skills: [
+            {
+                id: "seer-divination",
+                name: {
+                    translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.SKILL_NAME_SEER_DIVINATION,
+                },
+                cooldown: 120,
+                maxUses: 3,
+            },
+        ],
+        handleGameEvents: {
+            SkillUse: { skillId: "seer-divination" },
+        },
     },
     {
         id: "medium",
@@ -63,6 +90,19 @@ export const roles: RoleDefinition[] = [
         description: { translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.ROLE_DESCRIPTION_MEDIUM },
         factionId: "villager",
         sortIndex: 2,
+        skills: [
+            {
+                id: "medium-spiritualism",
+                name: {
+                    translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.SKILL_NAME_MEDIUM_SPIRITUALISM,
+                },
+                cooldown: 120,
+                maxUses: 3,
+            },
+        ],
+        handleGameEvents: {
+            SkillUse: { skillId: "medium-spiritualism" },
+        },
     },
     {
         id: "knight",
@@ -70,6 +110,19 @@ export const roles: RoleDefinition[] = [
         description: { translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.ROLE_DESCRIPTION_KNIGHT },
         factionId: "villager",
         sortIndex: 3,
+        skills: [
+            {
+                id: "knight-protect",
+                name: {
+                    translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.SKILL_NAME_KNIGHT_PROTECT,
+                },
+                cooldown: 120,
+                maxUses: 3,
+            },
+        ],
+        handleGameEvents: {
+            SkillUse: { skillId: "knight-protect" },
+        },
     },
     {
         id: "werewolf",
@@ -84,6 +137,8 @@ export const roles: RoleDefinition[] = [
         name: { translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.ROLE_NAME_GREATWOLF },
         description: { translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.ROLE_DESCRIPTION_GREATWOLF },
         factionId: "werewolf",
+        divinationResult: "villager",
+        mediumResult: "great-wolf",
         sortIndex: 5,
     },
     {
@@ -92,6 +147,8 @@ export const roles: RoleDefinition[] = [
         description: { translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.ROLE_DESCRIPTION_MADMAN },
         factionId: "werewolf",
         isExcludedFromSurvivalCheck: true,
+        divinationResult: "villager",
+        mediumResult: "villager",
         sortIndex: 6,
     },
 ];

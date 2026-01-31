@@ -1,5 +1,5 @@
 import { Kairo } from "./Kairo/index";
-import type { KairoCommand } from "./Kairo/utils/KairoUtils";
+import type { KairoCommand, KairoResponse } from "./Kairo/utils/KairoUtils";
 import { SystemManager } from "./StandardRoles/game/SystemManager";
 
 async function main(): Promise<void> {
@@ -27,7 +27,7 @@ Kairo.onDeactivate = () => {
     SystemManager.getInstance().unsubscribeEvents();
 };
 
-Kairo.onScriptEvent = async (command: KairoCommand) => {
+Kairo.onScriptEvent = async (command: KairoCommand): Promise<void | KairoResponse> => {
     /**
      * ここにはアドオンが scriptEvent を受け取った際の処理を書く
      * 利用できるプロパティは { data: KairoCommand } のみ
@@ -35,7 +35,7 @@ Kairo.onScriptEvent = async (command: KairoCommand) => {
      * The only available property is { data: KairoCommand }
      */
 
-    SystemManager.getInstance().handleScriptEvent(command);
+    return SystemManager.getInstance().handleScriptEvent(command);
 };
 
 Kairo.onTick = () => {

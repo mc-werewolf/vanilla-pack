@@ -5,8 +5,7 @@ export const SCRIPT_EVENT_COMMAND_IDS = {
     ROLE_REGISTRATION_REQUEST: "role_registration_request",
     ROLE_RE_REGISTRATION_REQUEST: "role_re_registration_request",
     WEREWOLF_INGAME_PLAYER_SKILL_TRIGGER: "werewolf_ingame_player_skill_trigger",
-    GET_PLAYER_WEREWOLF_DATA: "getPlayerWerewolfData",
-    GET_PLAYERS_WEREWOLF_DATA: "getPlayersWerewolfData",
+    GET_WEREWOLF_GAME_DATA: "getWerewolfGameData",
 };
 
 export const SCRIPT_EVENT_MESSAGES = {

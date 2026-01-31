@@ -6,23 +6,23 @@ export class WorldStateChanger {
     static create(systemManager) {
         return new WorldStateChanger(systemManager);
     }
-    change(next) {
+    change(next, ingameConstants) {
         const current = this.systemManager.getWorldState();
         if (current === next)
             return;
         switch (next) {
             case GameWorldState.InGame:
-                this.toInGame();
+                this.toInGame(ingameConstants);
                 break;
             case GameWorldState.OutGame:
                 this.toOutGame();
                 break;
         }
     }
-    toInGame() {
+    toInGame(ingameConstants) {
         this.systemManager.getOutGameManager()?.getOutGameEventManager().unsubscribeAll();
         this.systemManager.setOutGameManager(null);
-        const InGameManager = this.systemManager.createInGameManager();
+        const InGameManager = this.systemManager.createInGameManager(ingameConstants);
         InGameManager.getInGameEventManager().subscribeAll();
         this.systemManager.setInGameManager(InGameManager);
         this.systemManager.setWorldState(GameWorldState.InGame);

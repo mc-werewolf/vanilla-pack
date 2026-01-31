@@ -27,7 +27,7 @@ Kairo.onScriptEvent = async (command) => {
      * Write the handler logic for when the addon receives a scriptEvent
      * The only available property is { data: KairoCommand }
      */
-    SystemManager.getInstance().handleScriptEvent(command);
+    return SystemManager.getInstance().handleScriptEvent(command);
 };
 Kairo.onTick = () => {
     /**

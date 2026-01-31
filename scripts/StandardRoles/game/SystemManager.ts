@@ -1,6 +1,6 @@
-import type { KairoCommand } from "../../Kairo/utils/KairoUtils";
+import { KairoUtils, type KairoCommand, type KairoResponse } from "../../Kairo/utils/KairoUtils";
 import type { GameEventType } from "../data/roles";
-import { InGameManager } from "./ingame/InGameManager";
+import { InGameManager, type IngameConstants } from "./ingame/InGameManager";
 import { OutGameManager } from "./outgame/OutGameManager";
 import { SystemEventManager } from "./system/events/SystemEventManager";
 import { FactionManager } from "./system/factions/FactionManager";
@@ -48,8 +48,8 @@ export class SystemManager {
         return this.instance;
     }
 
-    public handleScriptEvent(data: KairoCommand): void {
-        this.scriptEventReceiver.handleScriptEvent(data);
+    public async handleScriptEvent(data: KairoCommand): Promise<void | KairoResponse> {
+        return this.scriptEventReceiver.handleScriptEvent(data);
     }
 
     public subscribeEvents(): void {
@@ -59,8 +59,8 @@ export class SystemManager {
     public unsubscribeEvents(): void {
         this.systemEventManager.unsubscribeAll();
     }
-    public changeWorldState(nextState: GameWorldState): void {
-        this.worldStateChanger.change(nextState);
+    public changeWorldState(nextState: GameWorldState, ingameConstants?: IngameConstants): void {
+        this.worldStateChanger.change(nextState, ingameConstants);
     }
 
     public getWorldState(): GameWorldState | null {
@@ -84,8 +84,8 @@ export class SystemManager {
         this.outGameManager = v;
     }
 
-    public createInGameManager(): InGameManager {
-        return InGameManager.create(this);
+    public createInGameManager(ingameConstants: IngameConstants): InGameManager {
+        return InGameManager.create(this, ingameConstants);
     }
     public createOutGameManager(): OutGameManager {
         return OutGameManager.create(this);
@@ -99,7 +99,12 @@ export class SystemManager {
         this.roleManager.requestRoleRegistration();
     }
 
-    public handlePlayerSkillTrigger(playerId: string, eventType: GameEventType): void {
-        this.inGameManager?.handlePlayerSkillTrigger(playerId, eventType);
+    public async handlePlayerSkillTrigger(
+        playerId: string,
+        eventType: GameEventType,
+    ): Promise<KairoResponse> {
+        if (!this.inGameManager)
+            return KairoUtils.buildKairoResponse({}, false, "InGameManager is not initialized");
+        return this.inGameManager.handlePlayerSkillTrigger(playerId, eventType);
     }
 }

@@ -1,3 +1,4 @@
+import type { IngameConstants } from "../ingame/InGameManager";
 import { GameWorldState, type SystemManager } from "../SystemManager";
 
 export class WorldStateChanger {
@@ -6,13 +7,13 @@ export class WorldStateChanger {
         return new WorldStateChanger(systemManager);
     }
 
-    public change(next: GameWorldState): void {
+    public change(next: GameWorldState, ingameConstants?: IngameConstants): void {
         const current = this.systemManager.getWorldState();
         if (current === next) return;
 
         switch (next) {
             case GameWorldState.InGame:
-                this.toInGame();
+                this.toInGame(ingameConstants!);
                 break;
 
             case GameWorldState.OutGame:
@@ -21,11 +22,11 @@ export class WorldStateChanger {
         }
     }
 
-    private toInGame(): void {
+    private toInGame(ingameConstants: IngameConstants): void {
         this.systemManager.getOutGameManager()?.getOutGameEventManager().unsubscribeAll();
         this.systemManager.setOutGameManager(null);
 
-        const InGameManager = this.systemManager.createInGameManager();
+        const InGameManager = this.systemManager.createInGameManager(ingameConstants);
         InGameManager.getInGameEventManager().subscribeAll();
         this.systemManager.setInGameManager(InGameManager);
 

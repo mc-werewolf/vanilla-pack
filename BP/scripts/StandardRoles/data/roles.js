@@ -5,6 +5,7 @@ export const GameEventTypeValues = [
     "AfterMeetingStart",
     "SkillUse",
     "SkillUseInMeeting",
+    "SkillUseOutMeeting",
     "Death",
 ];
 export const roles = [
@@ -22,6 +23,19 @@ export const roles = [
         description: { translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.ROLE_DESCRIPTION_SEER },
         factionId: "villager",
         sortIndex: 1,
+        skills: [
+            {
+                id: "seer-divination",
+                name: {
+                    translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.SKILL_NAME_SEER_DIVINATION,
+                },
+                cooldown: 120,
+                maxUses: 3,
+            },
+        ],
+        handleGameEvents: {
+            SkillUse: { skillId: "seer-divination" },
+        },
     },
     {
         id: "medium",
@@ -29,6 +43,19 @@ export const roles = [
         description: { translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.ROLE_DESCRIPTION_MEDIUM },
         factionId: "villager",
         sortIndex: 2,
+        skills: [
+            {
+                id: "medium-spiritualism",
+                name: {
+                    translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.SKILL_NAME_MEDIUM_SPIRITUALISM,
+                },
+                cooldown: 120,
+                maxUses: 3,
+            },
+        ],
+        handleGameEvents: {
+            SkillUse: { skillId: "medium-spiritualism" },
+        },
     },
     {
         id: "knight",
@@ -36,6 +63,19 @@ export const roles = [
         description: { translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.ROLE_DESCRIPTION_KNIGHT },
         factionId: "villager",
         sortIndex: 3,
+        skills: [
+            {
+                id: "knight-protect",
+                name: {
+                    translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.SKILL_NAME_KNIGHT_PROTECT,
+                },
+                cooldown: 120,
+                maxUses: 3,
+            },
+        ],
+        handleGameEvents: {
+            SkillUse: { skillId: "knight-protect" },
+        },
     },
     {
         id: "werewolf",
@@ -50,6 +90,8 @@ export const roles = [
         name: { translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.ROLE_NAME_GREATWOLF },
         description: { translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.ROLE_DESCRIPTION_GREATWOLF },
         factionId: "werewolf",
+        divinationResult: "villager",
+        mediumResult: "great-wolf",
         sortIndex: 5,
     },
     {
@@ -58,6 +100,8 @@ export const roles = [
         description: { translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.ROLE_DESCRIPTION_MADMAN },
         factionId: "werewolf",
         isExcludedFromSurvivalCheck: true,
+        divinationResult: "villager",
+        mediumResult: "villager",
         sortIndex: 6,
     },
 ];

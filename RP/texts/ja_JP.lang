@@ -35,3 +35,12 @@ werewolf-standardroles.game.result.villagerfaction.victory.title=§a村人陣営
 werewolf-standardroles.game.result.villagerfaction.victory.message=§a村人陣営§fが勝利しました！§r
 werewolf-standardroles.game.result.werewolffaction.victory.title=§4人狼陣営§fの勝利！§r
 werewolf-standardroles.game.result.werewolffaction.victory.message=§4人狼陣営§fが勝利しました！§r
+
+werewolf-standardroles.skill.seer.form.title=占い
+werewolf-standardroles.skill.seer.form.description=生存しているプレイヤーの中から1人を占い、§4人狼§rであるかどうかを知ることができます
+werewolf-standardroles.skill.seer.form.target.dropdown.label=プレイヤー名を選んでください
+werewolf-standardroles.skill.seer.divination.result=§b%1§r§fは%2%3§rです
+
+werewolf-standardroles.skill.name.seer.divination=§a占い§r
+werewolf-standardroles.skill.name.medium.spiritualism=§a霊視§r
+werewolf-standardroles.skill.name.knight.protect=§a守護§r

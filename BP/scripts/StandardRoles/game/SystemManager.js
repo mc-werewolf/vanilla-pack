@@ -1,3 +1,4 @@
+import { KairoUtils } from "../../Kairo/utils/KairoUtils";
 import { InGameManager } from "./ingame/InGameManager";
 import { OutGameManager } from "./outgame/OutGameManager";
 import { SystemEventManager } from "./system/events/SystemEventManager";
@@ -33,8 +34,8 @@ export class SystemManager {
         }
         return this.instance;
     }
-    handleScriptEvent(data) {
-        this.scriptEventReceiver.handleScriptEvent(data);
+    async handleScriptEvent(data) {
+        return this.scriptEventReceiver.handleScriptEvent(data);
     }
     subscribeEvents() {
         this.systemEventManager.subscribeAll();
@@ -42,8 +43,8 @@ export class SystemManager {
     unsubscribeEvents() {
         this.systemEventManager.unsubscribeAll();
     }
-    changeWorldState(nextState) {
-        this.worldStateChanger.change(nextState);
+    changeWorldState(nextState, ingameConstants) {
+        this.worldStateChanger.change(nextState, ingameConstants);
     }
     getWorldState() {
         return this.currentWorldState;
@@ -63,8 +64,8 @@ export class SystemManager {
     setOutGameManager(v) {
         this.outGameManager = v;
     }
-    createInGameManager() {
-        return InGameManager.create(this);
+    createInGameManager(ingameConstants) {
+        return InGameManager.create(this, ingameConstants);
     }
     createOutGameManager() {
         return OutGameManager.create(this);
@@ -75,8 +76,10 @@ export class SystemManager {
     requestRoleRegistration() {
         this.roleManager.requestRoleRegistration();
     }
-    handlePlayerSkillTrigger(playerId, eventType) {
-        this.inGameManager?.handlePlayerSkillTrigger(playerId, eventType);
+    async handlePlayerSkillTrigger(playerId, eventType) {
+        if (!this.inGameManager)
+            return KairoUtils.buildKairoResponse({}, false, "InGameManager is not initialized");
+        return this.inGameManager.handlePlayerSkillTrigger(playerId, eventType);
     }
 }
 SystemManager.instance = null;
