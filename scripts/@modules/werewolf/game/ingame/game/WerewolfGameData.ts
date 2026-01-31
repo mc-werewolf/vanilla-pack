@@ -1,4 +1,4 @@
-import type { RoleDefinition } from "../../../data/roles";
+import type { RoleDefinition } from "../../../../../StandardRoles/roles/roles";
 
 export type WerewolfGameData = {
     remainingTicks: number;

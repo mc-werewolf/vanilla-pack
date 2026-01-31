@@ -1,16 +1,20 @@
-import { KairoUtils, type KairoResponse } from "../../../Kairo/utils/KairoUtils";
 import { SCRIPT_EVENT_COMMAND_IDS } from "../../constants/scriptevent";
 import { KAIRO_COMMAND_TARGET_ADDON_IDS } from "../../constants/systems";
-import { roles, type GameEventType, type RoleDefinition } from "../../data/roles";
+import {
+    roles,
+    type GameEventType,
+    type RoleDefinition,
+} from "../../../../StandardRoles/roles/roles";
 import type { SystemManager } from "../SystemManager";
 import { InGameEventManager } from "./events/InGameEventManager";
 import type { WerewolfGameData } from "./game/WerewolfGameData";
 import { SkillManager } from "./game/SkillManager";
-import type { FactionDefinition } from "../../data/factions";
-import { playerData, type SelfPlayerData } from "../../data/player";
+import { playerData, type SelfPlayerData } from "../../../../StandardRoles/player";
 import { world } from "@minecraft/server";
 import { GameManager } from "./game/GameManager";
-import { onSecondUpdate, onTickUpdate } from "../../data/update";
+import { KairoUtils, type KairoResponse } from "../../../../@core/kairo/utils/KairoUtils";
+import type { FactionDefinition } from "../../../../StandardRoles/factions/factions";
+import { onSecondUpdate, onTickUpdate } from "../../../../StandardRoles/update";
 
 export enum GamePhase {
     Initializing,
@@ -47,7 +51,10 @@ export class InGameManager {
         private readonly ingameConstants: IngameConstants,
     ) {
         this.inGameEventManager = InGameEventManager.create(this);
-        this.gameManager = GameManager.create(this, { onTickUpdate, onSecondUpdate });
+        this.gameManager = GameManager.create(this, {
+            onTickUpdate: onTickUpdate,
+            onSecondUpdate: onSecondUpdate,
+        });
         this.skillManager = SkillManager.create(this, roles);
         this.initSelfPlayersData();
     }

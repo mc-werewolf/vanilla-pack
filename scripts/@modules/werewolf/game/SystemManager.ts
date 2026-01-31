@@ -1,5 +1,9 @@
-import { KairoUtils, type KairoCommand, type KairoResponse } from "../../Kairo/utils/KairoUtils";
-import type { GameEventType } from "../data/roles";
+import {
+    KairoUtils,
+    type KairoCommand,
+    type KairoResponse,
+} from "../../../@core/kairo/utils/KairoUtils";
+import type { GameEventType } from "../../../StandardRoles/roles/roles";
 import { GamePhase, InGameManager, type IngameConstants } from "./ingame/InGameManager";
 import { OutGameManager } from "./outgame/OutGameManager";
 import { SystemEventManager } from "./system/events/SystemEventManager";

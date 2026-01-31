@@ -1,4 +1,4 @@
-import type { GameEventHandlerMap } from "../../game/ingame/game/SkillManager";
+import type { GameEventHandlerMap } from "../../../@modules/werewolf/game/ingame/game/SkillManager";
 import { knightSkillHandlers } from "./knight";
 import { mediumSkillHandlers } from "./medium";
 import { seerSkillHandlers } from "./seer";

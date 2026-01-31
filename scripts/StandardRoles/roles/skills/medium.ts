@@ -1,8 +1,8 @@
 import { world } from "@minecraft/server";
-import type { GameEventHandlerMap } from "../../game/ingame/game/SkillManager";
 import { ModalFormData } from "@minecraft/server-ui";
-import { WEREWOLF_STANDARDROLES_TRANSLATE_IDS } from "../../constants/translate";
 import { findFactionDefinition, findRoleDefinition, getRoleDefaultColor } from "./utils";
+import type { GameEventHandlerMap } from "../../../@modules/werewolf/game/ingame/game/SkillManager";
+import { WEREWOLF_STANDARDROLES_TRANSLATE_IDS } from "../../constants/translate";
 import { SYSTEMS } from "../../constants/systems";
 
 export const mediumSkillHandlers: GameEventHandlerMap = {

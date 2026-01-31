@@ -1,7 +1,7 @@
-import { KairoUtils } from "../../../../Kairo/utils/KairoUtils";
+import { KairoUtils } from "../../../../../@core/kairo/utils/KairoUtils";
+import { factions } from "../../../../../StandardRoles/factions/factions";
 import { SCRIPT_EVENT_COMMAND_IDS } from "../../../constants/scriptevent";
 import { KAIRO_COMMAND_TARGET_ADDON_IDS } from "../../../constants/systems";
-import { factions } from "../../../data/factions";
 import { FactionManager } from "./FactionManager";
 
 export class FactionRegistrationRequester {

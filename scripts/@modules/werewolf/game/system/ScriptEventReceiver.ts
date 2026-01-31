@@ -1,4 +1,4 @@
-import { KairoUtils, type KairoCommand, type KairoResponse } from "../../../Kairo/utils/KairoUtils";
+import type { KairoCommand, KairoResponse } from "../../../../@core/kairo/utils/KairoUtils";
 import { SCRIPT_EVENT_COMMAND_IDS, SCRIPT_EVENT_MESSAGES } from "../../constants/scriptevent";
 import type { IngameConstants } from "../ingame/InGameManager";
 import { GameWorldState, type SystemManager } from "../SystemManager";
