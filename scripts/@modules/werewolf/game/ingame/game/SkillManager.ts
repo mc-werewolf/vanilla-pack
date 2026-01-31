@@ -1,7 +1,7 @@
 import { KairoUtils, type KairoResponse } from "../../../../../@core/kairo/utils/KairoUtils";
-import type { SelfPlayerData } from "../../../../../StandardRoles/player";
-import type { GameEventType, RoleDefinition } from "../../../../../StandardRoles/roles/roles";
-import { roleSkillHandlers } from "../../../../../StandardRoles/roles/skills/skillHandlers";
+import type { SelfPlayerData } from "../../../../../standard-roles/player";
+import type { GameEventType, RoleDefinition } from "../../../../../standard-roles/roles/roles";
+import { roleSkillHandlers } from "../../../../../standard-roles/roles/skills/skillHandlers";
 import type { IngameConstants, InGameManager } from "../InGameManager";
 import type { WerewolfGameData } from "./WerewolfGameData";
 

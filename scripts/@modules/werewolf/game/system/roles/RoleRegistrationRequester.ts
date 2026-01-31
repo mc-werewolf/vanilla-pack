@@ -1,7 +1,7 @@
 import { KairoUtils } from "../../../../../@core/kairo/utils/KairoUtils";
 import { SCRIPT_EVENT_COMMAND_IDS } from "../../../constants/scriptevent";
 import { KAIRO_COMMAND_TARGET_ADDON_IDS } from "../../../constants/systems";
-import { roles } from "../../../../../StandardRoles/roles/roles";
+import { roles } from "../../../../../standard-roles/roles/roles";
 import { RoleManager } from "./RoleManager";
 
 export class RoleRegistrationRequester {
