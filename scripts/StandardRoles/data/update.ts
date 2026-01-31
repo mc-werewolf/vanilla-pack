@@ -11,7 +11,7 @@ export const onTickUpdate = (ev: GameEventContext): void => {
         if (!playerData) return;
 
         if (playerData.isProtected) {
-            player.addEffect(MinecraftEffectTypes.Resistance, 1, {
+            player.addEffect(MinecraftEffectTypes.Resistance, 2, {
                 amplifier: 255,
                 showParticles: false,
             });
