@@ -45,7 +45,7 @@ export const properties = {
         {
             type: "script",
             language: "javascript",
-            entry: "scripts/@core/index.js",
+            entry: "scripts/index.js",
             version: "header.version",
             uuid: "452e2f4a-8a7f-44b2-967b-a604ba9e3955",
         },
