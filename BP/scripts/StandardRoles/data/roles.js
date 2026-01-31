@@ -45,16 +45,16 @@ export const roles = [
         sortIndex: 2,
         skills: [
             {
-                id: "medium-spiritualism",
+                id: "medium-clairvoyance",
                 name: {
-                    translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.SKILL_NAME_MEDIUM_SPIRITUALISM,
+                    translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.SKILL_NAME_MEDIUM_CLAIRVOYANCE,
                 },
                 cooldown: 120,
                 maxUses: 3,
             },
         ],
         handleGameEvents: {
-            SkillUse: { skillId: "medium-spiritualism" },
+            SkillUse: { skillId: "medium-clairvoyance" },
         },
     },
     {
@@ -91,7 +91,7 @@ export const roles = [
         description: { translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.ROLE_DESCRIPTION_GREATWOLF },
         factionId: "werewolf",
         divinationResult: "villager",
-        mediumResult: "great-wolf",
+        clairvoyanceResult: "great-wolf",
         sortIndex: 5,
     },
     {
@@ -101,7 +101,7 @@ export const roles = [
         factionId: "werewolf",
         isExcludedFromSurvivalCheck: true,
         divinationResult: "villager",
-        mediumResult: "villager",
+        clairvoyanceResult: "villager",
         sortIndex: 6,
     },
 ];

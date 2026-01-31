@@ -34,11 +34,22 @@ export const WEREWOLF_STANDARDROLES_TRANSLATE_IDS = {
         "werewolf-standardroles.game.result.villagerfaction.victory.message",
 
     SKILL_NAME_SEER_DIVINATION: "werewolf-standardroles.skill.name.seer.divination",
+    SKILL_NAME_KNIGHT_PROTECT: "werewolf-standardroles.skill.name.knight.protect",
+    SKILL_NAME_MEDIUM_CLAIRVOYANCE: "werewolf-standardroles.skill.name.medium.clairvoyance",
+
     SEER_SKILL_FORM_TITLE: "werewolf-standardroles.skill.seer.form.title",
     SEER_SKILL_FORM_DESCRIPTION: "werewolf-standardroles.skill.seer.form.description",
     SEER_SKILL_FORM_TARGET_DROPDOWN_LABEL:
         "werewolf-standardroles.skill.seer.form.target.dropdown.label",
     SEER_SKILL_DIVINATION_RESULT: "werewolf-standardroles.skill.seer.divination.result",
-    SKILL_NAME_MEDIUM_SPIRITUALISM: "werewolf-standardroles.skill.name.medium.spiritualism",
-    SKILL_NAME_KNIGHT_PROTECT: "werewolf-standardroles.skill.name.knight.protect",
+    SEER_SKILL_NO_AVAILABLE_TARGETS_ERROR:
+        "werewolf-standardroles.skill.seer.noAvailableTargets.error",
+
+    MEDIUM_SKILL_FORM_TITLE: "werewolf-standardroles.skill.medium.form.title",
+    MEDIUM_SKILL_FORM_DESCRIPTION: "werewolf-standardroles.skill.medium.form.description",
+    MEDIUM_SKILL_FORM_TARGET_DROPDOWN_LABEL:
+        "werewolf-standardroles.skill.medium.form.target.dropdown.label",
+    MEDIUM_SKILL_CLAIRVOYANCE_RESULT: "werewolf-standardroles.skill.medium.clairvoyance.result",
+    MEDIUM_SKILL_NO_AVAILABLE_TARGETS_ERROR:
+        "werewolf-standardroles.skill.medium.noAvailableTargets.error",
 };

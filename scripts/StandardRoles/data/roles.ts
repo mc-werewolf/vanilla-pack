@@ -31,7 +31,7 @@ export interface RoleDefinition {
     };
     readonly color?: string; // 指定しなければ、factionに基づいて自動で決定される
     readonly divinationResult?: string; // 占い結果 roleId (別アドオンでも可)
-    readonly mediumResult?: string; // 霊視結果 roleId (別アドオンでも可)
+    readonly clairvoyanceResult?: string; // 霊視結果 roleId (別アドオンでも可)
     readonly knownRoles?: string[]; // 初期に知っている役職
     readonly skills?: SkillDefinition[]; // 役職に紐づくスキル定義
     readonly handleGameEvents?: RoleSkillEvents; // スキルのトリガーとなるイベント
@@ -92,16 +92,16 @@ export const roles: RoleDefinition[] = [
         sortIndex: 2,
         skills: [
             {
-                id: "medium-spiritualism",
+                id: "medium-clairvoyance",
                 name: {
-                    translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.SKILL_NAME_MEDIUM_SPIRITUALISM,
+                    translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.SKILL_NAME_MEDIUM_CLAIRVOYANCE,
                 },
                 cooldown: 120,
                 maxUses: 3,
             },
         ],
         handleGameEvents: {
-            SkillUse: { skillId: "medium-spiritualism" },
+            SkillUse: { skillId: "medium-clairvoyance" },
         },
     },
     {
@@ -138,7 +138,7 @@ export const roles: RoleDefinition[] = [
         description: { translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.ROLE_DESCRIPTION_GREATWOLF },
         factionId: "werewolf",
         divinationResult: "villager",
-        mediumResult: "great-wolf",
+        clairvoyanceResult: "great-wolf",
         sortIndex: 5,
     },
     {
@@ -148,7 +148,7 @@ export const roles: RoleDefinition[] = [
         factionId: "werewolf",
         isExcludedFromSurvivalCheck: true,
         divinationResult: "villager",
-        mediumResult: "villager",
+        clairvoyanceResult: "villager",
         sortIndex: 6,
     },
 ];

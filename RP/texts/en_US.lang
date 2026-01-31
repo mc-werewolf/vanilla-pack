@@ -36,11 +36,18 @@ werewolf-standardroles.game.result.villagerfaction.victory.message=§fThe §aVil
 werewolf-standardroles.game.result.werewolffaction.victory.title=§4Werewolves§f Win!§r
 werewolf-standardroles.game.result.werewolffaction.victory.message=§fThe §4Werewolf§f Faction has won.§r
 
+werewolf-standardroles.skill.name.seer.divination=§aDivination§r
+werewolf-standardroles.skill.name.medium.clairvoyance=§aClairvoyance§r
+werewolf-standardroles.skill.name.knight.protect=§aProtection§r
+
 werewolf-standardroles.skill.seer.form.title=Divination
 werewolf-standardroles.skill.seer.form.description=Select a living player to divine whether they are a werewolf or not.
 werewolf-standardroles.skill.seer.form.target.dropdown.label=Select Player Name
 werewolf-standardroles.skill.seer.divination.result=§b%1§r§f is the %2%3§r.
+werewolf-standardroles.skill.seer.noAvailableTargets.error=§cNo available targets to divine§r
 
-werewolf-standardroles.skill.name.seer.divination=§aDivination§r
-werewolf-standardroles.skill.name.medium.spiritualism=§aSpiritualism§r
-werewolf-standardroles.skill.name.knight.protect=§aProtection§r
+werewolf-standardroles.skill.medium.form.title=Clairvoyance
+werewolf-standardroles.skill.medium.form.description=Select a dead player to see if they are a werewolf.
+werewolf-standardroles.skill.medium.form.target.dropdown.label=Select Player Name
+werewolf-standardroles.skill.medium.clairvoyance.result=§b%1§r§f is the %2%3§r.
+werewolf-standardroles.skill.medium.noAvailableTargets.error=§cNo available targets to clairvoyance§r

@@ -36,11 +36,18 @@ werewolf-standardroles.game.result.villagerfaction.victory.message=§a村人陣�
 werewolf-standardroles.game.result.werewolffaction.victory.title=§4人狼陣営§fの勝利！§r
 werewolf-standardroles.game.result.werewolffaction.victory.message=§4人狼陣営§fが勝利しました！§r
 
+werewolf-standardroles.skill.name.seer.divination=§a占い§r
+werewolf-standardroles.skill.name.medium.clairvoyance=§a霊視§r
+werewolf-standardroles.skill.name.knight.protect=§a守護§r
+
 werewolf-standardroles.skill.seer.form.title=占い
 werewolf-standardroles.skill.seer.form.description=生存しているプレイヤーの中から1人を占い、§4人狼§rであるかどうかを知ることができます
 werewolf-standardroles.skill.seer.form.target.dropdown.label=プレイヤー名を選んでください
 werewolf-standardroles.skill.seer.divination.result=§b%1§r§fは%2%3§rです
+werewolf-standardroles.skill.seer.noAvailableTargets.error=§c占いできる対象がいません§r
 
-werewolf-standardroles.skill.name.seer.divination=§a占い§r
-werewolf-standardroles.skill.name.medium.spiritualism=§a霊視§r
-werewolf-standardroles.skill.name.knight.protect=§a守護§r
+werewolf-standardroles.skill.medium.form.title=霊視
+werewolf-standardroles.skill.medium.form.description=死亡しているプレイヤーの中から1人を霊視し、§4人狼§rであるかどうかを知ることができます
+werewolf-standardroles.skill.medium.form.target.dropdown.label=プレイヤー名を選んでください
+werewolf-standardroles.skill.medium.clairvoyance.result=§b%1§r§fは%2%3§rです
+werewolf-standardroles.skill.medium.noAvailableTargets.error=§c霊視できる対象がいません§r

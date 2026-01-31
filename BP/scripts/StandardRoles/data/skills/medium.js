@@ -3,12 +3,12 @@ import { ModalFormData } from "@minecraft/server-ui";
 import { WEREWOLF_STANDARDROLES_TRANSLATE_IDS } from "../../constants/translate";
 import { findFactionDefinition, findRoleDefinition, getRoleDefaultColor } from "./utils";
 import { SYSTEMS } from "../../constants/systems";
-export const seerSkillHandlers = {
-    "seer-divination": async (playerId, ev, c) => {
+export const mediumSkillHandlers = {
+    "medium-clairvoyance": async (playerId, ev, c) => {
         const player = world.getPlayers().find((p) => p.id === playerId);
         if (!player)
             return false;
-        const targetPlayersData = ev.playersData.filter((p) => p.isAlive && p.player.id !== playerId);
+        const targetPlayersData = ev.playersData.filter((p) => !p.isAlive && p.player.id !== playerId);
         if (targetPlayersData.length === 0) {
             player.playSound(SYSTEMS.ERROR.SOUND_ID, {
                 pitch: SYSTEMS.ERROR.SOUND_PITCH,
@@ -16,17 +16,19 @@ export const seerSkillHandlers = {
                 location: player.location,
             });
             player.sendMessage({
-                translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.SEER_SKILL_NO_AVAILABLE_TARGETS_ERROR,
+                translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.MEDIUM_SKILL_NO_AVAILABLE_TARGETS_ERROR,
             });
             return false;
         }
         const form = new ModalFormData()
             .title({
-            translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.SEER_SKILL_FORM_TITLE,
+            translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.MEDIUM_SKILL_FORM_TITLE,
         })
-            .label({ translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.SEER_SKILL_FORM_DESCRIPTION })
+            .label({
+            translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.MEDIUM_SKILL_FORM_DESCRIPTION,
+        })
             .dropdown({
-            translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.SEER_SKILL_FORM_TARGET_DROPDOWN_LABEL,
+            translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.MEDIUM_SKILL_FORM_TARGET_DROPDOWN_LABEL,
         }, targetPlayersData.map((p) => p.player.name), { defaultValueIndex: 0 });
         const res = await form.show(player);
         if (res.canceled || !res.formValues)
@@ -37,9 +39,9 @@ export const seerSkillHandlers = {
         const targetPlayerFaction = findFactionDefinition(c.factionDefinitions, targetPlayerData.role.factionId);
         if (!targetPlayerFaction)
             return false;
-        const divinationResultRoleId = targetPlayerData.role.divinationResult ?? targetPlayerFaction.defaultRoleId;
-        const divinationResultRoleDefinition = findRoleDefinition(c.roleDefinitions, divinationResultRoleId);
-        if (!divinationResultRoleDefinition)
+        const clairvoyanceResultRoleId = targetPlayerData.role.clairvoyanceResult ?? targetPlayerFaction.defaultRoleId;
+        const clairvoyanceResultRoleDefinition = findRoleDefinition(c.roleDefinitions, clairvoyanceResultRoleId);
+        if (!clairvoyanceResultRoleDefinition)
             return false;
         player.playSound(SYSTEMS.SUCCESS.SOUND_ID, {
             pitch: SYSTEMS.SUCCESS.SOUND_PITCH,
@@ -47,15 +49,15 @@ export const seerSkillHandlers = {
             location: player.location,
         });
         player.sendMessage({
-            translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.SEER_SKILL_DIVINATION_RESULT,
+            translate: WEREWOLF_STANDARDROLES_TRANSLATE_IDS.MEDIUM_SKILL_CLAIRVOYANCE_RESULT,
             with: {
                 rawtext: [
                     { text: targetPlayerData.player.name },
                     {
-                        text: divinationResultRoleDefinition.color ??
-                            getRoleDefaultColor(c, divinationResultRoleDefinition),
+                        text: clairvoyanceResultRoleDefinition.color ??
+                            getRoleDefaultColor(c, clairvoyanceResultRoleDefinition),
                     },
-                    divinationResultRoleDefinition.name,
+                    clairvoyanceResultRoleDefinition.name,
                 ],
             },
         });
