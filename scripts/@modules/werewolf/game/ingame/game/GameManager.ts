@@ -1,6 +1,6 @@
 import { system } from "@minecraft/server";
 import type { IngameConstants, InGameManager } from "../InGameManager";
-import type { SelfPlayerData } from "../../../../../StandardRoles/player";
+import type { SelfPlayerData } from "../../../../../VanillaPack/player";
 
 export type GameEventContext = {
     readonly playerData: SelfPlayerData;

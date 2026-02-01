@@ -4,17 +4,17 @@ import {
     roles,
     type GameEventType,
     type RoleDefinition,
-} from "../../../../StandardRoles/roles/roles";
+} from "../../../../VanillaPack/roles/roles";
 import type { SystemManager } from "../SystemManager";
 import { InGameEventManager } from "./events/InGameEventManager";
 import type { WerewolfGameData } from "./game/WerewolfGameData";
 import { SkillManager } from "./game/SkillManager";
-import { playerData, type SelfPlayerData } from "../../../../StandardRoles/player";
+import { playerData, type SelfPlayerData } from "../../../../VanillaPack/player";
 import { world } from "@minecraft/server";
 import { GameManager } from "./game/GameManager";
 import { KairoUtils, type KairoResponse } from "../../../../@core/kairo/utils/KairoUtils";
-import type { FactionDefinition } from "../../../../StandardRoles/factions/factions";
-import { onSecondUpdate, onTickUpdate } from "../../../../StandardRoles/update";
+import type { FactionDefinition } from "../../../../VanillaPack/factions/factions";
+import { onSecondUpdate, onTickUpdate } from "../../../../VanillaPack/update";
 
 export enum GamePhase {
     Initializing,

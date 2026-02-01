@@ -1,9 +1,9 @@
 {
   "format_version": 2,
   "header": {
-    "name": "Werewolf Standard Roles",
-    "description": "provides and handles the fundamental roles of the Werewolf game.",
-    "uuid": "39716916-2dec-4c1f-b1e6-b9ff0496899b",
+    "name": "Werewolf-VanillaPack",
+    "description": "provides and handles the fundamental mechanics and standard gameplay of the Werewolf game.",
+    "uuid": "2f1bb43f-5805-4640-80e1-e12adc9145f0",
     "version": [
       1,
       0,
@@ -20,7 +20,7 @@
       "type": "script",
       "language": "javascript",
       "entry": "scripts/index.js",
-      "uuid": "452e2f4a-8a7f-44b2-967b-a604ba9e3955",
+      "uuid": "82778a72-ca4b-495b-854a-be780a86c0d5",
       "version": [
         1,
         0,
@@ -31,14 +31,14 @@
   "dependencies": [
     {
       "module_name": "@minecraft/server",
-      "version": "2.1.0"
+      "version": "2.4.0"
     },
     {
       "module_name": "@minecraft/server-ui",
       "version": "2.0.0"
     },
     {
-      "uuid": "ae9411df-ada9-4e2e-a563-924f38978c9c",
+      "uuid": "2a14b77a-4a4a-4bef-9fcb-753ef553a1ad",
       "version": [
         1,
         0,

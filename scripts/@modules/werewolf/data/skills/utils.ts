@@ -1,6 +1,6 @@
 import type { IngameConstants } from "../../game/ingame/InGameManager";
-import type { RoleDefinition } from "../../../../StandardRoles/roles/roles";
-import type { FactionDefinition } from "../../../../StandardRoles/factions/factions";
+import type { RoleDefinition } from "../../../../VanillaPack/roles/roles";
+import type { FactionDefinition } from "../../../../VanillaPack/factions/factions";
 
 export function findRoleDefinition(
     RolesByAddon: Record<string, RoleDefinition[]>,

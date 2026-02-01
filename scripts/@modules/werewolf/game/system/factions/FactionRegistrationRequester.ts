@@ -1,5 +1,5 @@
 import { KairoUtils } from "../../../../../@core/kairo/utils/KairoUtils";
-import { factions } from "../../../../../StandardRoles/factions/factions";
+import { factions } from "../../../../../VanillaPack/factions/factions";
 import { SCRIPT_EVENT_COMMAND_IDS } from "../../../constants/scriptevent";
 import { KAIRO_COMMAND_TARGET_ADDON_IDS } from "../../../constants/systems";
 import { FactionManager } from "./FactionManager";
