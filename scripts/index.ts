@@ -1,3 +1,5 @@
+import "./VanillaPack/events/EntityHurt";
+
 import { Kairo } from "./@core/kairo";
 import { SystemManager } from "./@modules/werewolf/game/SystemManager";
 import type { KairoCommand, KairoResponse } from "./@core/kairo/utils/KairoUtils";

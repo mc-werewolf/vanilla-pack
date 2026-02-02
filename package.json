@@ -5,8 +5,7 @@
     "main": "index.js",
     "type": "module",
     "scripts": {
-        "typecheck": "tsc --noEmit",
-        "build": "rimraf BP/scripts && npm run typecheck && node build.mjs && npm run deploy",
+        "build": "node src/generate-event-imports.js && rimraf BP/scripts && tsc --noEmit && node build.mjs && npm run deploy",
         "deploy": "node src/deploy.js"
     },
     "repository": {
