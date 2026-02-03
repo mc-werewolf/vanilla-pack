@@ -7,6 +7,7 @@ import {
 } from "../../../../VanillaPack/roles/roles";
 import type { SystemManager } from "../SystemManager";
 import { InGameEventManager } from "./events/InGameEventManager";
+import { GamePhase } from "./GamePhase";
 import type { WerewolfGameData } from "./game/WerewolfGameData";
 import { SkillManager } from "./game/SkillManager";
 import { playerData, type SelfPlayerData } from "../../../../VanillaPack/player";
@@ -15,14 +16,6 @@ import { GameManager } from "./game/GameManager";
 import { KairoUtils, type KairoResponse } from "../../../../@core/kairo/utils/KairoUtils";
 import type { FactionDefinition } from "../../../../VanillaPack/factions/factions";
 import { onSecondUpdate, onTickUpdate } from "../../../../VanillaPack/update";
-
-export enum GamePhase {
-    Initializing = "Initializing",
-    Preparing = "Preparing",
-    InGame = "InGame",
-    Result = "Result",
-    Waiting = "Waiting",
-}
 
 export interface PlayerDataDTO {
     playerId: string;

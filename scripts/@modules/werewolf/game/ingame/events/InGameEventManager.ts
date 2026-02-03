@@ -1,5 +1,5 @@
 import { BaseEventManager } from "../../events/BaseEventManager";
-import { InGameManager } from "../InGameManager";
+import type { InGameManager } from "../InGameManager";
 import { InGameBlockExplode } from "./BlockExplode";
 import { InGameButtonPush } from "./ButtonPush";
 import { InGameDataDrivenEntityTrigger } from "./DataDrivenEntityTrigger";
