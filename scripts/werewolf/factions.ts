@@ -1,5 +1,5 @@
 import type { FactionDefinition } from "../@modules/game-manager/constants/types";
-import { registerFactions } from "../internal/registry";
+import { registerFactions } from "../internal/registerBridge";
 import { WEREWOLF_VANILLAPACK_TRANSLATE_IDS } from "./constants/translate";
 
 export const factions: FactionDefinition[] = [
