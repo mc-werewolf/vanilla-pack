@@ -1,6 +1,6 @@
 import { system } from "@minecraft/server";
 import type { InGameManager } from "../InGameManager";
-import type { SelfPlayerData } from "../../../../../werewolf/player";
+import type { SelfPlayerData } from "../PlayerData";
 import type { IngameConstants } from "./IngameConstants";
 
 export type GameEventContext = {
@@ -19,15 +19,15 @@ export class GameManager {
 
     private constructor(
         private readonly inGameManager: InGameManager,
-        private readonly onTickHandler: GameEventHandler,
-        private readonly onSecondHandler: GameEventHandler,
+        private readonly onTickHandler?: GameEventHandler,
+        private readonly onSecondHandler?: GameEventHandler,
     ) {}
 
     public static create(
         inGameManager: InGameManager,
         handlers: {
-            onTickUpdate: GameEventHandler;
-            onSecondUpdate: GameEventHandler;
+            onTickUpdate?: GameEventHandler;
+            onSecondUpdate?: GameEventHandler;
         },
     ): GameManager {
         return new GameManager(inGameManager, handlers.onTickUpdate, handlers.onSecondUpdate);

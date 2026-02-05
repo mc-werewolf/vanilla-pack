@@ -1,7 +1,6 @@
-export type SelfPlayerData = {
-    playerId: string;
-    isProtected: boolean;
-} & Record<string, any>;
+import type { SelfPlayerData } from "../@modules/game-manager/game/ingame/PlayerData";
+
+export type { SelfPlayerData };
 
 // 任意にプロパティを追加可能。
 // ここで定義したものがデフォルト値となります。

@@ -4,15 +4,13 @@ import type { SystemManager } from "../SystemManager";
 import { InGameEventManager } from "./events/InGameEventManager";
 import type { WerewolfGameData } from "./game/WerewolfGameData";
 import { SkillManager } from "./game/SkillManager";
-import { playerData, type SelfPlayerData } from "../../../../werewolf/player";
 import { world } from "@minecraft/server";
 import { GameManager } from "./game/GameManager";
-import { onSecondUpdate, onTickUpdate } from "../../../../werewolf/update";
 import { GamePhase } from "./GamePhase";
 import type { GameEventType, RoleDefinition } from "../../constants/types";
-import { roles } from "../../../../werewolf/roles";
 import { IngameConstants, type IngameConstantsDTO } from "./game/IngameConstants";
 import { KairoUtils, type KairoResponse } from "@kairo-ts/router";
+import type { SelfPlayerData } from "./PlayerData";
 
 export interface PlayerDataDTO {
     playerId: string;
@@ -38,10 +36,12 @@ export class InGameManager {
     ) {
         this.inGameEventManager = InGameEventManager.create(this);
         this.ingameConstants = IngameConstants.create(this, ingameConstantsDTO);
+        const updateHandlers = this.systemManager.getRegistry().getUpdateHandlers();
         this.gameManager = GameManager.create(this, {
-            onTickUpdate: onTickUpdate,
-            onSecondUpdate: onSecondUpdate,
+            onTickUpdate: updateHandlers?.onTickUpdate,
+            onSecondUpdate: updateHandlers?.onSecondUpdate,
         });
+        const roles = this.systemManager.getRegistry().getRoles() ?? [];
         this.skillManager = SkillManager.create(this, roles);
         this.initSelfPlayersData();
     }
@@ -76,6 +76,8 @@ export class InGameManager {
     }
 
     public getRoleDefinition(roleId: string): RoleDefinition | undefined {
+        const roles = this.systemManager.getRegistry().getRoles();
+        if (!roles) return undefined;
         return roles.find((role) => role.id === roleId);
     }
 
@@ -110,10 +112,11 @@ export class InGameManager {
 
     private initSelfPlayersData(): void {
         const players = world.getPlayers();
+        const defaultPlayerData = this.systemManager.getRegistry().getPlayerData();
 
         for (const player of players) {
             this.playerDataByPlayerId.set(player.id, {
-                ...playerData,
+                ...defaultPlayerData,
                 playerId: player.id,
             });
         }

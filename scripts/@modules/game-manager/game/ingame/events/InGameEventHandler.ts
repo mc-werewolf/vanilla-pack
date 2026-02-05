@@ -1,7 +1,7 @@
 import { BaseEventHandler } from "../../events/BaseEventHandler";
 import type { InGameEventManager } from "./InGameEventManager";
 import { GamePhase } from "../GamePhase";
-import type { SelfPlayerData } from "../../../../../werewolf/player";
+import type { SelfPlayerData } from "../PlayerData";
 import type { WerewolfGameData } from "../game/WerewolfGameData";
 import type { IngameConstants } from "../game/IngameConstants";
 
