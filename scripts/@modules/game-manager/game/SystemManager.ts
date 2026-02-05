@@ -8,6 +8,7 @@ import { DefinitionManager } from "./system/definitions/DefinitionManager";
 import { SystemEventManager } from "./system/events/SystemEventManager";
 import { ScriptEventReceiver } from "./system/ScriptEventReceiver";
 import { WorldStateChanger } from "./system/WorldStateChanger";
+import { DefinitionRegistry } from "./system/definitions/DefinitionRegistry";
 
 export enum GameWorldState {
     OutGame = "OutGame",
@@ -19,6 +20,7 @@ export class SystemManager {
     private readonly systemEventManager = SystemEventManager.create(this);
     private readonly worldStateChanger = WorldStateChanger.create(this);
     private readonly definitionManager = DefinitionManager.create(this);
+    private readonly registry = DefinitionRegistry.create(this);
     private inGameManager: InGameManager | null = null;
     private outGameManager: OutGameManager | null = null;
     private currentWorldState: GameWorldState | null = null;
@@ -75,6 +77,10 @@ export class SystemManager {
     }
     public setOutGameManager(v: OutGameManager | null) {
         this.outGameManager = v;
+    }
+
+    public getRegistry(): DefinitionRegistry {
+        return this.registry;
     }
 
     public createInGameManager(ingameConstants: IngameConstantsDTO): InGameManager {
