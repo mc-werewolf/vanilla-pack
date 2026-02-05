@@ -1,6 +1,6 @@
 import type { SettingDefinition } from "../@modules/game-manager/constants/types";
-import { registerSettings } from "../internal/registerBridge";
+import { registerSettingDefinitions } from "../internal/definitionRegistryBridge";
 
 export const settings: SettingDefinition[] = [];
 
-registerSettings(settings);
+registerSettingDefinitions(settings);

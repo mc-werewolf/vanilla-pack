@@ -9,39 +9,39 @@ import type { GameEventHandlerMap } from "../@modules/game-manager/game/ingame/g
 import { SystemManager } from "../@modules/game-manager/game/SystemManager";
 import type { SelfPlayerData } from "../werewolf/player";
 
-export const registerWerewolfModules = (): void => {
+export const initializeRuntimeRegistry = (): void => {
     SystemManager.getInstance().getRegistry().init({});
 };
 
-export const registerRoles = (roles: RoleDefinition[]): void => {
+export const registerRuntimeRoleDefinitions = (roles: RoleDefinition[]): void => {
     SystemManager.getInstance().getRegistry().registerDefinitions({
         roles,
     });
 };
 
-export const registerFactions = (factions: FactionDefinition[]): void => {
+export const registerRuntimeFactionDefinitions = (factions: FactionDefinition[]): void => {
     SystemManager.getInstance().getRegistry().registerDefinitions({
         factions,
     });
 };
 
-export const registerRoleGroups = (roleGroups: RoleGroupDefinition[]): void => {
+export const registerRuntimeRoleGroupDefinitions = (roleGroups: RoleGroupDefinition[]): void => {
     SystemManager.getInstance().getRegistry().registerDefinitions({
         roleGroups,
     });
 };
 
-export const registerSettings = (settings: SettingDefinition[]): void => {
+export const registerRuntimeSettingDefinitions = (settings: SettingDefinition[]): void => {
     SystemManager.getInstance().getRegistry().registerDefinitions({
         settings,
     });
 };
 
-export const registerPlayerData = (data: SelfPlayerData): void => {
+export const registerRuntimePlayerDefaults = (data: SelfPlayerData): void => {
     SystemManager.getInstance().getRegistry().registerPlayerData(data);
 };
 
-export const registerOnTickUpdate = (handler: (ev: GameEventContext) => void): void => {
+export const registerRuntimeTickUpdateHandler = (handler: (ev: GameEventContext) => void): void => {
     const registry = SystemManager.getInstance().getRegistry();
     const currentHandlers = registry.getUpdateHandlers() ?? {};
     registry.registerUpdateHandlers({
@@ -50,7 +50,7 @@ export const registerOnTickUpdate = (handler: (ev: GameEventContext) => void): v
     });
 };
 
-export const registerOnSecondUpdate = (handler: (ev: GameEventContext) => void): void => {
+export const registerRuntimeSecondUpdateHandler = (handler: (ev: GameEventContext) => void): void => {
     const registry = SystemManager.getInstance().getRegistry();
     const currentHandlers = registry.getUpdateHandlers() ?? {};
     registry.registerUpdateHandlers({
@@ -59,6 +59,8 @@ export const registerOnSecondUpdate = (handler: (ev: GameEventContext) => void):
     });
 };
 
-export const registerRoleSkillHandlers = (handlers: Record<string, GameEventHandlerMap>): void => {
+export const registerRuntimeRoleSkillHandlerMap = (
+    handlers: Record<string, GameEventHandlerMap>,
+): void => {
     SystemManager.getInstance().getRegistry().registerRoleSkillHandlers(handlers);
 };

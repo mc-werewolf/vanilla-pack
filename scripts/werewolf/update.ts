@@ -1,7 +1,10 @@
 import { world } from "@minecraft/server";
 import { MinecraftEffectTypes } from "@minecraft/vanilla-data";
 import type { GameEventContext } from "../@modules/game-manager/game/ingame/game/GameManager";
-import { registerOnSecondUpdate, registerOnTickUpdate } from "../internal/registerBridge";
+import {
+    registerSecondUpdateHandler,
+    registerTickUpdateHandler,
+} from "../internal/definitionRegistryBridge";
 
 export const onTickUpdate = (ev: GameEventContext): void => {
     const { playerData, playersData, ingameConstants } = ev;
@@ -24,5 +27,5 @@ export const onSecondUpdate = (ev: GameEventContext): void => {
     const { playerData, playersData, ingameConstants } = ev;
 };
 
-registerOnTickUpdate(onTickUpdate);
-registerOnSecondUpdate(onSecondUpdate);
+registerTickUpdateHandler(onTickUpdate);
+registerSecondUpdateHandler(onSecondUpdate);

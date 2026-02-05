@@ -1,5 +1,5 @@
 import type { SelfPlayerData } from "../@modules/game-manager/game/ingame/PlayerData";
-import { registerPlayerData } from "../internal/registry";
+import { registerRuntimePlayerDefaults } from "../internal/runtimeRegistry";
 
 export type { SelfPlayerData };
 
@@ -10,4 +10,4 @@ export const playerData: SelfPlayerData = {
     isProtected: false, // 騎士の守護
 };
 
-registerPlayerData(playerData);
+registerRuntimePlayerDefaults(playerData);

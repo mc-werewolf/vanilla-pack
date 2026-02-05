@@ -14,7 +14,7 @@ import {
 } from "../@modules/game-manager/game/registry";
 import type { SelfPlayerData } from "../werewolf/player";
 
-export const registerWerewolfModules = async (): Promise<void> => {
+export const loadWerewolfDefinitionModules = async (): Promise<void> => {
     await Promise.all([
         import("../werewolf/roles").catch(() => undefined),
         import("../werewolf/factions").catch(() => undefined),
@@ -26,46 +26,46 @@ export const registerWerewolfModules = async (): Promise<void> => {
     registerUpdateHandlers({});
 };
 
-export const registerRoles = (roles: RoleDefinition[]): void => {
+export const registerRoleDefinitions = (roles: RoleDefinition[]): void => {
     registerDefinitions({
         roles,
     });
 };
 
-export const registerFactions = (factions: FactionDefinition[]): void => {
+export const registerFactionDefinitions = (factions: FactionDefinition[]): void => {
     registerDefinitions({
         factions,
     });
 };
 
-export const registerRoleGroups = (roleGroups: RoleGroupDefinition[]): void => {
+export const registerRoleGroupDefinitions = (roleGroups: RoleGroupDefinition[]): void => {
     registerDefinitions({
         roleGroups,
     });
 };
 
-export const registerSettings = (settings: SettingDefinition[]): void => {
+export const registerSettingDefinitions = (settings: SettingDefinition[]): void => {
     registerDefinitions({
         settings,
     });
 };
 
-export const registerPlayerData = (data: SelfPlayerData): void => {
+export const registerPlayerDefaults = (data: SelfPlayerData): void => {
     registerPlayerDataInRegistry(data);
 };
 
-export const registerOnTickUpdate = (handler: (ev: GameEventContext) => void): void => {
+export const registerTickUpdateHandler = (handler: (ev: GameEventContext) => void): void => {
     registerUpdateHandlers({
         onTickUpdate: handler,
     });
 };
 
-export const registerOnSecondUpdate = (handler: (ev: GameEventContext) => void): void => {
+export const registerSecondUpdateHandler = (handler: (ev: GameEventContext) => void): void => {
     registerUpdateHandlers({
         onSecondUpdate: handler,
     });
 };
 
-export const registerRoleSkillHandlers = (handlers: Record<string, GameEventHandlerMap>): void => {
+export const registerRoleSkillHandlerMap = (handlers: Record<string, GameEventHandlerMap>): void => {
     registerRoleSkillHandlersInRegistry(handlers);
 };

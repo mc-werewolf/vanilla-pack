@@ -9,7 +9,7 @@ import {
 } from "@kairo-ts/router";
 import { SystemManager } from "./@modules/game-manager/game/SystemManager";
 import { properties } from "./properties";
-import { registerWerewolfModules } from "./internal/registerBridge";
+import { loadWerewolfDefinitionModules } from "./internal/definitionRegistryBridge";
 
 async function main(): Promise<void> {
     Kairo.init(properties); // client
@@ -23,7 +23,7 @@ Kairo.onActivate = async () => {
      * Write the initialization logic executed when the addon becomes active
      */
 
-    await registerWerewolfModules();
+    await loadWerewolfDefinitionModules();
     SystemManager.getInstance().subscribeEvents();
     SystemManager.getInstance().init();
 };
