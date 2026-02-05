@@ -8,6 +8,8 @@ import type { GameEventContext } from "../@modules/game-manager/game/ingame/game
 import type { GameEventHandlerMap } from "../@modules/game-manager/game/ingame/game/SkillManager";
 import {
     registerDefinitions,
+    registerPlayerData as registerPlayerDataInRegistry,
+    registerRoleSkillHandlers as registerRoleSkillHandlersInRegistry,
     registerUpdateHandlers,
 } from "../@modules/game-manager/game/registry";
 import type { SelfPlayerData } from "../werewolf/player";
@@ -49,7 +51,7 @@ export const registerSettings = (settings: SettingDefinition[]): void => {
 };
 
 export const registerPlayerData = (data: SelfPlayerData): void => {
-    registerPlayerData(data);
+    registerPlayerDataInRegistry(data);
 };
 
 export const registerOnTickUpdate = (handler: (ev: GameEventContext) => void): void => {
@@ -65,5 +67,5 @@ export const registerOnSecondUpdate = (handler: (ev: GameEventContext) => void):
 };
 
 export const registerRoleSkillHandlers = (handlers: Record<string, GameEventHandlerMap>): void => {
-    registerRoleSkillHandlers(handlers);
+    registerRoleSkillHandlersInRegistry(handlers);
 };
