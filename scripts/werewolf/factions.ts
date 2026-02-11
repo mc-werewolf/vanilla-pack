@@ -1,4 +1,4 @@
-import { DefinitionRegistry, type FactionDefinition } from "@mc-werewolf/game-engine";
+import { DefinitionRegistry, type FactionDefinition } from "@mc-werewolf/game-module";
 import { WEREWOLF_VANILLAPACK_TRANSLATE_IDS } from "./constants/translate";
 
 export const factions: FactionDefinition[] = [

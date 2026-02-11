@@ -1,6 +1,6 @@
 import { world } from "@minecraft/server";
 import { MinecraftEffectTypes } from "@minecraft/vanilla-data";
-import { DefinitionRegistry, type GameEventContext } from "@mc-werewolf/game-engine";
+import { DefinitionRegistry, type GameEventContext } from "@mc-werewolf/game-module";
 
 export const onTickUpdate = (ev: GameEventContext): void => {
     const { playerData, playersData, ingameConstants } = ev;

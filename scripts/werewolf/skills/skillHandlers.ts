@@ -1,7 +1,7 @@
 import { knightSkillHandlers } from "./knight";
 import { mediumSkillHandlers } from "./medium";
 import { seerSkillHandlers } from "./seer";
-import { DefinitionRegistry, type GameEventHandlerMap } from "@mc-werewolf/game-engine";
+import { DefinitionRegistry, type GameEventHandlerMap } from "@mc-werewolf/game-module";
 
 export const roleSkillHandlers: Record<string, GameEventHandlerMap> = {
     seer: seerSkillHandlers,

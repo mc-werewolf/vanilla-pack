@@ -1,7 +1,7 @@
 import "./werewolf/events/EntityHurt";
 
-import { Kairo, KairoUtils, type KairoCommand, type KairoResponse } from "@kairo-ts/router";
-import { SystemManager } from "@mc-werewolf/game-engine";
+import { Kairo, type KairoCommand, type KairoResponse } from "@kairo-js/router";
+import { SystemManager } from "@mc-werewolf/game-module";
 import { properties } from "./properties";
 
 async function main(): Promise<void> {

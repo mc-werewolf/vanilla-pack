@@ -2,7 +2,7 @@ import { world } from "@minecraft/server";
 import { ModalFormData } from "@minecraft/server-ui";
 import { SYSTEMS } from "../constants/systems";
 import { WEREWOLF_VANILLAPACK_TRANSLATE_IDS } from "../constants/translate";
-import type { GameEventHandlerMap } from "@mc-werewolf/game-engine";
+import type { GameEventHandlerMap } from "@mc-werewolf/game-module";
 
 export const mediumSkillHandlers: GameEventHandlerMap = {
     "medium-clairvoyance": async (ev) => {

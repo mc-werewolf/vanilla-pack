@@ -1,7 +1,7 @@
 import { EntityHurtAfterEvent, world } from "@minecraft/server";
 import { MinecraftDimensionTypes } from "@minecraft/vanilla-data";
 import { SYSTEMS } from "../constants/systems";
-import { InGameEntityHurt } from "@mc-werewolf/game-engine";
+import { InGameEntityHurt } from "@mc-werewolf/game-module";
 
 InGameEntityHurt.afterEvent<EntityHurtAfterEvent>((ev, ctx) => {
     const { damage, damageSource, hurtEntity } = ev;
