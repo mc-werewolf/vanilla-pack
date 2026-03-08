@@ -29,18 +29,19 @@ Werewolf-StandardRoles は、人狼ゲームにおける基本的な役職を提
 ## Requirements
 
 - Node.js (for development and TypeScript build)
+- pnpm 10.31.0
 
 ## Setup && Build
 
 1. Install dependencies:
     ```bash
-    npm install
+    pnpm install
     ```
 2. Deploy
     ```bash
-    npm run build
+    pnpm run build
     ```
 3. Auto-deploy on file change:
     ```bash
-    npm run dev
+    pnpm run dev
     ```

@@ -1,5 +1,5 @@
 node_modules/
-package-lock.json
+pnpm-lock.yaml
 BP/scripts/
 BP/manifest.json
 BP/pack_icon.png
