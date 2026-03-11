@@ -41,7 +41,3 @@ Werewolf-StandardRoles は、人狼ゲームにおける基本的な役職を提
     ```bash
     pnpm run build
     ```
-3. Auto-deploy on file change:
-    ```bash
-    pnpm run dev
-    ```
