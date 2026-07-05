@@ -41,6 +41,7 @@ werewolf-vanillapack.game.result.werewolffaction.victory.message=§fThe §4Werew
 werewolf-vanillapack.skill.name.seer.divination=§aDivination§r
 werewolf-vanillapack.skill.name.medium.clairvoyance=§aClairvoyance§r
 werewolf-vanillapack.skill.name.knight.protect=§aProtection§r
+werewolf-vanillapack.skill.name.werewolf.attack=§cAttack§r
 
 werewolf-vanillapack.skill.seer.form.title=Divination
 werewolf-vanillapack.skill.seer.form.description=Select a living player to divine whether they are a werewolf or not.
@@ -59,3 +60,5 @@ werewolf-vanillapack.skill.knight.form.description=Select a living player to gra
 werewolf-vanillapack.skill.knight.form.target.dropdown.label=Select Player Name
 werewolf-vanillapack.skill.knight.protect.result=§e%s has been protected§r
 werewolf-vanillapack.skill.knight.noAvailableTargets.error=§cNo available targets to protect§r
+
+werewolf-vanillapack.skill.werewolf.attack.description=Select a living player to attack.

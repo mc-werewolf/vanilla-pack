@@ -1,33 +1,22 @@
-import type { KairoAddonProperties } from "@kairo-js/router";
+import type { AddonProperties } from "@kairo-js/properties";
 
-export const properties: KairoAddonProperties = {
-    id: "werewolf-vanillapack", //# // a-z & 0-9 - _
+export const properties: AddonProperties = {
+    id: "werewolf-vanillapack",
     metadata: {
         authors: ["shizuku86"],
     },
     header: {
         name: "Werewolf VanillaPack",
-        description:
-            "provides and handles the fundamental mechanics and standard gameplay of the Werewolf game.",
-        version: {
-            major: 0,
-            minor: 1,
-            patch: 0,
-        },
-        min_engine_version: [1, 21, 132],
+        description: "Provides fundamental mechanics and standard gameplay of the Werewolf game.",
+        version: { major: 0, minor: 1, patch: 0 },
+        min_engine_version: { major: 1, minor: 21, patch: 132 },
     },
-    dependencies: [
-        {
-            module_name: "@minecraft/server",
-            version: "2.8.0",
-        },
-        {
-            module_name: "@minecraft/server-ui",
-            version: "2.0.0",
-        },
+    minecraftDependencies: [
+        { module_name: "@minecraft/server", version: "2.8.0" },
+        { module_name: "@minecraft/server-ui", version: "2.0.0" },
     ],
-    requiredAddons: {
-        "werewolf-gamemanager": "1.0.0-dev.1",
+    dependencies: {
+        kairo: "^1.0.0-beta.0",
+        "werewolf-gamemanager": "^0.1.0",
     },
-    tags: ["official", "stable"],
 };
