@@ -17,6 +17,7 @@ export const properties: AddonProperties = {
     ],
     dependencies: {
         kairo: "^1.0.0-beta.0",
+        "kairo-database": "^1.0.0-beta.0",
         "werewolf-gamemanager": "^0.1.0",
     },
 };
