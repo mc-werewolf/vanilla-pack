@@ -10,10 +10,10 @@ importers:
     devDependencies:
       '@kairo-js/build-tools':
         specifier: 1.0.0-beta.4
-        version: 1.0.0-beta.4(@kairo-js/properties@file:../../packages/kairo-properties)
+        version: 1.0.0-beta.4(@kairo-js/properties@1.2.1)
       '@kairo-js/properties':
-        specifier: file:../../packages/kairo-properties
-        version: file:../../packages/kairo-properties
+        specifier: 1.2.1
+        version: 1.2.1
       '@kairo-js/router':
         specifier: file:../../packages/kairo-router
         version: file:../../packages/kairo-router(@minecraft/server-ui@2.0.0(@minecraft/vanilla-data@1.26.2))(@minecraft/server@2.8.0(@minecraft/common@1.2.0)(@minecraft/vanilla-data@1.26.2))
@@ -241,16 +241,12 @@ packages:
 
   '@kairo-js/build-tools@1.0.0-beta.4':
     resolution: {integrity: sha512-0zmAD8M6RjS+Bts3YQ5U5g74OwqsEK3gJkK19vPRmeDs16tTz8FdU3GZFGBnedZnW/6VuNenQgNQByWEwDT3ig==}
-    version: 1.0.0-beta.4
     hasBin: true
     peerDependencies:
       '@kairo-js/properties': ^1.2.1
 
   '@kairo-js/properties@1.2.1':
     resolution: {integrity: sha512-/jdu+th3fY+l1TB9vRi/xr/Zx8E5zlQiJRW4S/KPD1fv+kckDt0PJavFtFsXAr3EGSwHitzDOIz+0Oyjy//pow==}
-
-  '@kairo-js/properties@file:../../packages/kairo-properties':
-    resolution: {directory: ../../packages/kairo-properties, type: directory}
 
   '@kairo-js/router@file:../../packages/kairo-router':
     resolution: {directory: ../../packages/kairo-router, type: directory}
@@ -528,15 +524,13 @@ snapshots:
     dependencies:
       dequal: 2.0.3
 
-  '@kairo-js/build-tools@1.0.0-beta.4(@kairo-js/properties@file:../../packages/kairo-properties)':
+  '@kairo-js/build-tools@1.0.0-beta.4(@kairo-js/properties@1.2.1)':
     dependencies:
-      '@kairo-js/properties': file:../../packages/kairo-properties
+      '@kairo-js/properties': 1.2.1
       esbuild: 0.27.3
       fs-extra: 11.3.4
 
   '@kairo-js/properties@1.2.1': {}
-
-  '@kairo-js/properties@file:../../packages/kairo-properties': {}
 
   '@kairo-js/router@file:../../packages/kairo-router(@minecraft/server-ui@2.0.0(@minecraft/vanilla-data@1.26.2))(@minecraft/server@2.8.0(@minecraft/common@1.2.0)(@minecraft/vanilla-data@1.26.2))':
     dependencies:
